@@ -47,8 +47,9 @@ extension CardView {
                 Text("99")
                     .font(.title2)
                 
-                Circle()
-                    .frame(width: 22, height: 22)
+                Image(systemName: "checkmark.seal.fill")
+                    .foregroundStyle(.white, .blue)
+                    .font(.title2)
             }
             Text("よろしくお願いします。")
             
