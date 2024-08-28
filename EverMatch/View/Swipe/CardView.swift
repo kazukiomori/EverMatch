@@ -32,7 +32,7 @@ struct CardView: View {
 
 extension CardView {
     private var imageLayer: some View {
-        Image("avatar")
+        Image("user01")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 100)
