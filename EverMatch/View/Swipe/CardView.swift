@@ -9,7 +9,7 @@ import SwiftUI
 
 struct CardView: View {
     
-    private var offset: CGSize = .zero
+    @State private var offset: CGSize = .zero
     var body: some View {
         ZStack(alignment: .bottom) {
             // background
@@ -26,6 +26,7 @@ struct CardView: View {
         }
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .offset(offset)
+        .gesture(gesture)
     }
 }
 
@@ -33,6 +34,7 @@ struct CardView: View {
     ListView()
 }
 
+// MARK: -UI
 extension CardView {
     private var imageLayer: some View {
         Image("user01")
@@ -60,5 +62,25 @@ extension CardView {
         .foregroundStyle(.white)
         .frame(maxWidth: .infinity, alignment: .leading)
         .padding()
+    }
+}
+
+// MARK: -Action
+extension CardView {
+    
+    private var gesture: some Gesture {
+        DragGesture()
+            .onChanged { value in
+                let width = value.translation.width
+                let height = value.translation.height
+                
+                let limitedHeight = height > 0 ? min(height, 100) : max(height, -100)
+                offset = CGSize(width: width, height: limitedHeight)
+            }
+            .onEnded { value in
+                withAnimation {
+                    offset = .zero
+                }
+            }
     }
 }
