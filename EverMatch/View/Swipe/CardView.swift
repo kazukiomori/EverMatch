@@ -79,7 +79,16 @@ extension CardView {
             }
             .onEnded { value in
                 withAnimation {
-                    offset = .zero
+                    let width = value.translation.width
+                    let height = value.translation.height
+                    
+                    guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
+                    let screenWidth = window.screen.bounds.width
+                    if abs(width) > screenWidth / 4 {
+                        offset = CGSize(width: width > 0 ? screenWidth * 1.5: -screenWidth * 1.5, height: height)
+                    } else {
+                        offset = .zero
+                    }
                 }
             }
     }
