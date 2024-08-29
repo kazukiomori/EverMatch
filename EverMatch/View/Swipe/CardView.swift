@@ -27,6 +27,7 @@ struct CardView: View {
         .clipShape(RoundedRectangle(cornerRadius: 15))
         .offset(offset)
         .gesture(gesture)
+        .scaleEffect(scale)
     }
 }
 
@@ -68,6 +69,15 @@ extension CardView {
 // MARK: -Action
 extension CardView {
     
+    private var screenWidth: CGFloat {
+        guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return 0.0 }
+        return window.screen.bounds.width
+    }
+    
+    private var scale: CGFloat {
+        return max((1.0 - abs(offset.width) / screenWidth), 0.75)
+    }
+    
     private var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
@@ -78,15 +88,16 @@ extension CardView {
                 offset = CGSize(width: width, height: limitedHeight)
             }
             .onEnded { value in
-                withAnimation {
-                    let width = value.translation.width
-                    let height = value.translation.height
-                    
-                    guard let window = UIApplication.shared.connectedScenes.first as? UIWindowScene else { return }
-                    let screenWidth = window.screen.bounds.width
-                    if abs(width) > screenWidth / 4 {
+                let width = value.translation.width
+                let height = value.translation.height
+                
+                
+                if abs(width) > screenWidth / 4 {
+                    withAnimation {
                         offset = CGSize(width: width > 0 ? screenWidth * 1.5: -screenWidth * 1.5, height: height)
-                    } else {
+                    }
+                } else {
+                    withAnimation {
                         offset = .zero
                     }
                 }
