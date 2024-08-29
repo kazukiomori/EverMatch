@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct CardView: View {
+    
+    private var offset: CGSize = .zero
     var body: some View {
         ZStack(alignment: .bottom) {
             // background
@@ -23,11 +25,12 @@ struct CardView: View {
             informationLayer
         }
         .clipShape(RoundedRectangle(cornerRadius: 15))
+        .offset(offset)
     }
 }
 
 #Preview {
-    CardView()
+    ListView()
 }
 
 extension CardView {
