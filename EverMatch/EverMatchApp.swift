@@ -11,7 +11,7 @@ import SwiftUI
 struct EverMatchApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ListView()
         }
     }
 }

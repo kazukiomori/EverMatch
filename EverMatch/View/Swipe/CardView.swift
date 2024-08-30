@@ -11,6 +11,8 @@ struct CardView: View {
     
     @State private var offset: CGSize = .zero
     let user: User
+    let adjustIndex: (Bool) -> Void
+    
     var body: some View {
         ZStack(alignment: .bottom) {
             // background
@@ -33,9 +35,34 @@ struct CardView: View {
         .gesture(gesture)
         .scaleEffect(scale)
         .rotationEffect(.degrees(angle))
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("NOPEACTION"), object: nil), perform: { _ in
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("NOPEACTION"), object: nil), perform: { data in
+            guard let info = data.userInfo,
+                  let id = info["id"] as? String else { return }
             
+            if id == user.id {
+                removeCard(isLiked: false)
+            }
+            print("タップされました")
         })
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("LIKEACTION"), object: nil), perform: { data in
+            guard let info = data.userInfo,
+                  let id = info["id"] as? String else { return }
+            
+            if id == user.id {
+                removeCard(isLiked: true)
+            }
+            print("タップされました")
+        })
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("REDOACTION"), object: nil), perform: { data in
+            guard let info = data.userInfo,
+                  let id = info["id"] as? String else { return }
+            
+            if id == user.id {
+                resetCard()
+            }
+            print("タップされました")
+        })
+        
     }
 }
 
@@ -132,6 +159,22 @@ extension CardView {
         return (offset.width / screenWidth) * 4.0
     }
     
+    private func removeCard(isLiked: Bool, height: CGFloat = 0.0) {
+        withAnimation(.smooth) {
+            offset = CGSize(width: isLiked ? screenWidth * 1.5: -screenWidth * 1.5, height: height)
+        }
+        
+        adjustIndex(false)
+    }
+    
+    private func resetCard() {
+        withAnimation(.smooth) {
+            offset = .zero
+        }
+        
+        adjustIndex(true)
+    }
+    
     private var gesture: some Gesture {
         DragGesture()
             .onChanged { value in
@@ -147,13 +190,9 @@ extension CardView {
                 
                 
                 if abs(width) > screenWidth / 4 {
-                    withAnimation {
-                        offset = CGSize(width: width > 0 ? screenWidth * 1.5: -screenWidth * 1.5, height: height)
-                    }
+                    removeCard(isLiked: width > 0, height: height)
                 } else {
-                    withAnimation {
-                        offset = .zero
-                    }
+                    resetCard()
                 }
             }
     }
