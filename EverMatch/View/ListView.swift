@@ -38,7 +38,7 @@ extension ListView {
     private var actions: some View {
         HStack(spacing: 68) {
             Button(action: {
-                print("ボタンがタップされました")
+                viewModel.nopeButtonTapped()
             }, label: {
                 Image(systemName: "xmark")
                     .font(.system(size: 26, weight: .bold))

@@ -33,6 +33,9 @@ struct CardView: View {
         .gesture(gesture)
         .scaleEffect(scale)
         .rotationEffect(.degrees(angle))
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("NOPEACTION"), object: nil), perform: { _ in
+            
+        })
     }
 }
 
