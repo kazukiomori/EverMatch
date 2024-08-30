@@ -10,6 +10,7 @@ import SwiftUI
 struct CardView: View {
     
     @State private var offset: CGSize = .zero
+    let user: User
     var body: some View {
         ZStack(alignment: .bottom) {
             // background
@@ -42,7 +43,7 @@ struct CardView: View {
 // MARK: -UI
 extension CardView {
     private var imageLayer: some View {
-        Image("user01")
+        Image(user.photoUrl ?? "avatar")
             .resizable()
             .aspectRatio(contentMode: .fill)
             .frame(width: 100)
@@ -51,18 +52,19 @@ extension CardView {
     private var informationLayer: some View {
         VStack(alignment: .leading) {
             HStack(alignment: .bottom) {
-                Text("ブルー")
+                Text(user.name)
                     .font(.largeTitle.bold())
                 
-                Text("99")
+                Text(String(user.age))
                     .font(.title2)
                 
                 Image(systemName: "checkmark.seal.fill")
                     .foregroundStyle(.white, .blue)
                     .font(.title2)
             }
-            Text("よろしくお願いします。")
-            
+            if let message = user.message {
+                Text(message)
+            }
         }
         .foregroundStyle(.white)
         .frame(maxWidth: .infinity, alignment: .leading)

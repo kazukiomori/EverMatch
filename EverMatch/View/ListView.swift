@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListView: View {
+    private let viewModel = ListViewModel()
     var body: some View {
         VStack(spacing: 0) {
             // cards
@@ -28,8 +29,8 @@ struct ListView: View {
 extension ListView {
     private var cards: some View {
         ZStack {
-            ForEach(0..<5) { _ in
-                CardView()
+            ForEach(viewModel.users.reversed()) { user in
+                CardView(user: user)
             }
         }
     }
