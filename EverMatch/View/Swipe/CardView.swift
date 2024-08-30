@@ -81,34 +81,12 @@ extension CardView {
         HStack {
             // Like
             Text("LIKE")
-                .tracking(4)
-                .foregroundStyle(.green)
-                .font(.system(size: 50))
-                .fontWeight(.heavy)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 2)
-                .overlay (
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.green, lineWidth: 5)
-                )
-                .rotationEffect(Angle(degrees: -15))
-                .offset(x: 16, y: 30)
+                .likeNopeText(isLike: true)
                 .opacity(opacity)
             
             // Nope
             Text("NOPE")
-                .tracking(4)
-                .foregroundStyle(.red)
-                .font(.system(size: 50))
-                .fontWeight(.heavy)
-                .padding(.horizontal, 8)
-                .padding(.vertical, 2)
-                .overlay (
-                    RoundedRectangle(cornerRadius: 10)
-                        .stroke(.red, lineWidth: 5)
-                )
-                .rotationEffect(Angle(degrees: 15))
-                .offset(x: -16, y: 36)
+                .likeNopeText(isLike: false)
                 .opacity(-opacity)
         }
         .frame(maxHeight: .infinity, alignment: .top)
