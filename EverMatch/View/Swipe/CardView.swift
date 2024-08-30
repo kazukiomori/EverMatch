@@ -35,33 +35,9 @@ struct CardView: View {
         .gesture(gesture)
         .scaleEffect(scale)
         .rotationEffect(.degrees(angle))
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("NOPEACTION"), object: nil), perform: { data in
-            guard let info = data.userInfo,
-                  let id = info["id"] as? String else { return }
-            
-            if id == user.id {
-                removeCard(isLiked: false)
-            }
-            print("タップされました")
-        })
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("LIKEACTION"), object: nil), perform: { data in
-            guard let info = data.userInfo,
-                  let id = info["id"] as? String else { return }
-            
-            if id == user.id {
-                removeCard(isLiked: true)
-            }
-            print("タップされました")
-        })
-        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("REDOACTION"), object: nil), perform: { data in
-            guard let info = data.userInfo,
-                  let id = info["id"] as? String else { return }
-            
-            if id == user.id {
-                resetCard()
-            }
-            print("タップされました")
-        })
+        .onReceive(NotificationCenter.default.publisher(for: Notification.Name("ACTIONFROMBUTTON"), object: nil)){ data in
+            recieveHandler(data: data)
+        }
         
     }
 }
@@ -195,5 +171,24 @@ extension CardView {
                     resetCard()
                 }
             }
+    }
+    
+    private func recieveHandler(data: NotificationCenter.Publisher.Output) {
+        guard let info = data.userInfo,
+              let id = info["id"] as? String,
+              let action = info["action"] as? Action
+        else { return }
+        
+        if id == user.id {
+            switch action {
+                
+            case .nope:
+                removeCard(isLiked: false)
+            case .redo:
+                resetCard()
+            case .like:
+                removeCard(isLiked: true)
+            }
+        }
     }
 }
