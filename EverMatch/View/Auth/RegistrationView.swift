@@ -15,6 +15,8 @@ struct RegistrationView: View {
     @State private var password = ""
     @State private var confirmPassword = ""
     
+    @Environment(\.dismiss) private var dismiss
+    
     var body: some View {
         VStack {
             // image
@@ -101,8 +103,8 @@ struct RegistrationView: View {
             Spacer()
             
             // Navigation
-            NavigationLink {
-                
+            Button {
+                dismiss()
             } label: {
                 HStack {
                     Text("すでにアカウントをお持ちの方")
