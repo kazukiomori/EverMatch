@@ -15,32 +15,13 @@ struct LoginView: View {
         NavigationStack {
             VStack {
                 // image
-                Image(systemName: "flame.circle.fill")
-                    .resizable()
-                    .scaledToFill()
-                    .foregroundStyle(.red)
-                    .frame(width: 120, height: 120)
-                    .padding(.vertical, 32)
+                BrandImage()
                 
                 // Form
                 VStack(spacing: 24) {
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("メールアドレス")
-                            .foregroundStyle(Color(.darkGray))
-                            .fontWeight(.semibold)
-                            .font(.footnote)
-                        TextField("入力してください", text: $email)
-                        Divider()
-                    }
-                    VStack(alignment: .leading, spacing: 12) {
-                        Text("パスワード")
-                            .foregroundStyle(Color(.darkGray))
-                            .fontWeight(.semibold)
-                            .font(.footnote)
-                        SecureField("半角英数字6文字以上", text: $password)
-                        Divider()
-                    }
+                    InputField(text: $email, label: "メールアドレス", placeholder: "入力してください")
                     
+                    InputField(text: $password, label: "パスワード", placeholder: "半角英数字6文字以上", isSecureField: true)
                 }
                 
                 // Button

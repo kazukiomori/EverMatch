@@ -20,31 +20,11 @@ struct RegistrationView: View {
     var body: some View {
         VStack {
             // image
-            Image(systemName: "flame.circle.fill")
-                .resizable()
-                .scaledToFill()
-                .foregroundStyle(.red)
-                .frame(width: 120, height: 120)
-                .padding(.vertical, 32)
-            
+            BrandImage()
             // Form
             VStack(spacing: 24) {
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("メールアドレス")
-                        .foregroundStyle(Color(.darkGray))
-                        .fontWeight(.semibold)
-                        .font(.footnote)
-                    TextField("入力してください", text: $email)
-                    Divider()
-                }
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("お名前")
-                        .foregroundStyle(Color(.darkGray))
-                        .fontWeight(.semibold)
-                        .font(.footnote)
-                    TextField("入力してください", text: $name)
-                    Divider()
-                }
+                InputField(text: $email, label: "メールアドレス", placeholder: "入力してください")
+                InputField(text: $name, label: "お名前", placeholder: "入力してください")
                 VStack(alignment: .leading, spacing: 12) {
                     HStack {
                         Text("年齢")
@@ -64,23 +44,8 @@ struct RegistrationView: View {
                     }
                     Divider()
                 }
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("パスワード")
-                        .foregroundStyle(Color(.darkGray))
-                        .fontWeight(.semibold)
-                        .font(.footnote)
-                    SecureField("半角英数字6文字以上", text: $password)
-                    Divider()
-                }
-                VStack(alignment: .leading, spacing: 12) {
-                    Text("パスワード(確認用)")
-                        .foregroundStyle(Color(.darkGray))
-                        .fontWeight(.semibold)
-                        .font(.footnote)
-                    SecureField("もう一度入力してください", text: $confirmPassword)
-                    Divider()
-                }
-                
+                InputField(text: $password, label: "パスワード", placeholder: "半角英数字6文字以上", isSecureField: true)
+                InputField(text: $confirmPassword, label: "パスワード(確認用)", placeholder: "もう一度入力してください", isSecureField: true)
             }
             
             // Button
