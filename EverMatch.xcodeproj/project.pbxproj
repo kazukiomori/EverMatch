@@ -22,6 +22,7 @@
 		3BF758F22C82F10500E84A64 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 3BF758F12C82F10500E84A64 /* FirebaseFirestore */; };
 		3BF758F42C82F11600E84A64 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 3BF758F32C82F11600E84A64 /* FirebaseStorage */; };
 		3BF758F72C83AE3B00E84A64 /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF758F62C83AE3B00E84A64 /* LoginView.swift */; };
+		3BF758F92C83B37500E84A64 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF758F82C83B37500E84A64 /* RegistrationView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -38,6 +39,7 @@
 		3BF758DF2C8243B900E84A64 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		3BF758E12C82DA2D00E84A64 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		3BF758F62C83AE3B00E84A64 /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		3BF758F82C83B37500E84A64 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,6 +159,7 @@
 			isa = PBXGroup;
 			children = (
 				3BF758F62C83AE3B00E84A64 /* LoginView.swift */,
+				3BF758F82C83B37500E84A64 /* RegistrationView.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -249,6 +252,7 @@
 				3BF758DE2C823C6000E84A64 /* Action.swift in Sources */,
 				3BF758DA2C81023F00E84A64 /* User.swift in Sources */,
 				3BCDEB682C7F9AE6003DC043 /* ListView.swift in Sources */,
+				3BF758F92C83B37500E84A64 /* RegistrationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
