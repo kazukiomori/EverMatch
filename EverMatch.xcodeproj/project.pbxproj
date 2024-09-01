@@ -25,6 +25,7 @@
 		3BF758F92C83B37500E84A64 /* RegistrationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF758F82C83B37500E84A64 /* RegistrationView.swift */; };
 		3BF758FC2C83B7FF00E84A64 /* BrandImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF758FB2C83B7FF00E84A64 /* BrandImage.swift */; };
 		3BF758FE2C83B88800E84A64 /* InputField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF758FD2C83B88800E84A64 /* InputField.swift */; };
+		3BF759002C842AC800E84A64 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF758FF2C842AC700E84A64 /* BasicButton.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		3BF758F82C83B37500E84A64 /* RegistrationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegistrationView.swift; sourceTree = "<group>"; };
 		3BF758FB2C83B7FF00E84A64 /* BrandImage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BrandImage.swift; sourceTree = "<group>"; };
 		3BF758FD2C83B88800E84A64 /* InputField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InputField.swift; sourceTree = "<group>"; };
+		3BF758FF2C842AC700E84A64 /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 			children = (
 				3BF758FB2C83B7FF00E84A64 /* BrandImage.swift */,
 				3BF758FD2C83B88800E84A64 /* InputField.swift */,
+				3BF758FF2C842AC700E84A64 /* BasicButton.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -263,6 +266,7 @@
 				3BF758DC2C81F71B00E84A64 /* ListViewModel.swift in Sources */,
 				3BF758F72C83AE3B00E84A64 /* LoginView.swift in Sources */,
 				3BF758E02C8243B900E84A64 /* Extensions.swift in Sources */,
+				3BF759002C842AC800E84A64 /* BasicButton.swift in Sources */,
 				3BCDEB6A2C7FA1DF003DC043 /* CardView.swift in Sources */,
 				3BF758DE2C823C6000E84A64 /* Action.swift in Sources */,
 				3BF758DA2C81023F00E84A64 /* User.swift in Sources */,

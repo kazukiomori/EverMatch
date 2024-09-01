@@ -25,19 +25,8 @@ struct LoginView: View {
                 }
                 
                 // Button
-                Button {
-                    
-                } label: {
-                    HStack {
-                        Text("ログイン")
-                        Image(systemName: "arrow.right")
-                    }
-                    .frame(maxWidth: .infinity)
-                    .padding(.vertical, 16)
-                    .fontWeight(.bold)
-                    .foregroundStyle(.white)
-                    .background(.red)
-                    .clipShape(Capsule())
+                BasicButton(label: "ログイン", icon: "arrow.right") {
+                    print("ログインボタンがタップされました")
                 }
                 .padding(.top, 24)
                 
