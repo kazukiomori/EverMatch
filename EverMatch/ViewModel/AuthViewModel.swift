@@ -14,8 +14,27 @@ class AuthViewModel {
     // Logout
     
     // Create Account
-    func createAccount(email: String, password: String) {
-        Auth.auth().createUser(withEmail: email, password: password)
+    func createAccount(email: String, password: String) async {
+        //Auth.auth().createUser(withEmail: email, password: password)
+        
+        //        Auth.auth().createUser(withEmail: email, password: password) { result, error in
+        //            print("Firebaseからの結果通知")
+        //
+        //            if let error = error {
+        //                print("ユーザー登録失敗: \(error.localizedDescription)")
+        //            }
+        //
+        //            if let result = result {
+        //                print("ユーザー登録成功: \(result.user.email)")
+        //            }
+        //        }
+        do {
+            let result = try await Auth.auth().createUser(withEmail: email, password: password)
+            print("ユーザー登録成功: \(result.user.email)")
+        } catch {
+            print("ユーザー登録失敗: \(error.localizedDescription)")
+        }
+        
     }
     
     // Delete Account
