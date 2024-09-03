@@ -9,6 +9,14 @@ import Foundation
 import FirebaseAuth
 
 class AuthViewModel {
+    
+    var userSession: FirebaseAuth.User?
+    
+    init() {
+        userSession = Auth.auth().currentUser
+        print("\(userSession?.email)")
+    }
+    
     // Login
     func login(email: String, passwaord: String) async {
         do {
@@ -21,6 +29,15 @@ class AuthViewModel {
     }
     
     // Logout
+    func logout() {
+        do {
+            try Auth.auth().signOut()
+            print("ログアウト成功")
+        } catch {
+            print("ログアウト失敗: \(error.localizedDescription)")
+        }
+        
+    }
     
     // Create Account
     func createAccount(email: String, password: String) async {
