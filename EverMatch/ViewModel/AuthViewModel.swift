@@ -10,6 +10,15 @@ import FirebaseAuth
 
 class AuthViewModel {
     // Login
+    func login(email: String, passwaord: String) async {
+        do {
+            let result = try await Auth.auth().signIn(withEmail: email, password: passwaord)
+            print("ログイン成功: \(result.user.email)")
+        } catch{
+            print("ログイン失敗: \(error.localizedDescription)")
+        }
+        
+    }
     
     // Logout
     

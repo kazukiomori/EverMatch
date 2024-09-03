@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct LoginView: View {
+    private let authViewModel = AuthViewModel()
     
     @State private var email = ""
     @State private var password = ""
@@ -26,7 +27,9 @@ struct LoginView: View {
                 
                 // Button
                 BasicButton(label: "ログイン", icon: "arrow.right") {
-                    print("ログインボタンがタップされました")
+                    Task {
+                        await authViewModel.login(email: email, passwaord: password)
+                    }
                 }
                 .padding(.top, 24)
                 
