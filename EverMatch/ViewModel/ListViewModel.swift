@@ -6,15 +6,18 @@
 //
 
 import Foundation
+import FirebaseFirestore
 
-class ListViewModel {
+class ListViewModel: ObservableObject {
     
-    var users = [User]()
+    @Published var users = [User]()
     
     private var currentIndex = 0
     
     init() {
-        self.users = getMockUsere()
+        Task {
+            self.users = await fetchUsers()
+        }
     }
     
     private func getMockUsere() -> [User] {
@@ -27,6 +30,22 @@ class ListViewModel {
             User.MOCK_USER6,
             User.MOCK_USER7
         ]
+    }
+    
+    private func fetchUsers() async -> [User] {
+        do {
+            let snapshot = try await Firestore.firestore().collection("users").getDocuments()
+            var tempUsers = [User]()
+            for document in snapshot.documents {
+                let user = try document.data(as: User.self)
+                tempUsers.append(user)
+            }
+            return tempUsers
+        } catch {
+            print("ユーザの取得失敗")
+            return []
+        }
+        
     }
     
     func adjustIndex(isRedo: Bool) {
