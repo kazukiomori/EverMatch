@@ -11,43 +11,11 @@ struct MyPageView: View {
     var body: some View {
         List {
             // User info
-            Section {
-                HStack(spacing: 16) {
-                    Image("avatar")
-                        .resizable()
-                        .aspectRatio(contentMode: .fill)
-                        .frame(width: 48, height: 48)
-                        .clipShape(Circle())
-                    
-                    VStack(alignment: .leading, spacing: 4) {
-                        Text("ブルー")
-                            .font(.subheadline)
-                            .fontWeight(.bold)
-                        
-                        Text("ブルー")
-                            .font(.footnote)
-                            .tint(.gray)
-                    }
-                }
-            }
+            userInfo
             
             // System info
             Section("一般") {
-                HStack(spacing: 16) {
-                    Image(systemName: "gear")
-                        .imageScale(.large)
-                        .foregroundStyle(.gray)
-                    
-                    Text("バージョン")
-                        .font(.subheadline)
-                        .foregroundStyle(.black)
-                    
-                    Spacer()
-                    
-                    Text("1.0.0")
-                        .font(.subheadline)
-                        .foregroundStyle(.gray)
-                }
+                MyPageRow(iconName: "gear", label: "バージョン", tintColor: .gray, value: "1.0.0")
             }
             
             // Navigation
@@ -100,4 +68,29 @@ struct MyPageView: View {
 
 #Preview {
     MyPageView()
+}
+
+extension MyPageView {
+    
+    private var userInfo: some View {
+        Section {
+            HStack(spacing: 16) {
+                Image("avatar")
+                    .resizable()
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: 48, height: 48)
+                    .clipShape(Circle())
+                
+                VStack(alignment: .leading, spacing: 4) {
+                    Text("ブルー")
+                        .font(.subheadline)
+                        .fontWeight(.bold)
+                    
+                    Text("ブルー")
+                        .font(.footnote)
+                        .tint(.gray)
+                }
+            }
+        }
+    }
 }

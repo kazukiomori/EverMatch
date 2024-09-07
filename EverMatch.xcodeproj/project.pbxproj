@@ -28,6 +28,7 @@
 		3BF759002C842AC800E84A64 /* BasicButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF758FF2C842AC700E84A64 /* BasicButton.swift */; };
 		3BF759022C842D6100E84A64 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF759012C842D6100E84A64 /* AuthViewModel.swift */; };
 		3BF759052C8A34B400E84A64 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF759042C8A34B300E84A64 /* MyPageView.swift */; };
+		3BF759072C8A39DE00E84A64 /* MyPageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF759062C8A39DE00E84A64 /* MyPageRow.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,6 +51,7 @@
 		3BF758FF2C842AC700E84A64 /* BasicButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BasicButton.swift; sourceTree = "<group>"; };
 		3BF759012C842D6100E84A64 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3BF759042C8A34B300E84A64 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
+		3BF759062C8A39DE00E84A64 /* MyPageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRow.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -183,6 +185,7 @@
 				3BF758FB2C83B7FF00E84A64 /* BrandImage.swift */,
 				3BF758FD2C83B88800E84A64 /* InputField.swift */,
 				3BF758FF2C842AC700E84A64 /* BasicButton.swift */,
+				3BF759062C8A39DE00E84A64 /* MyPageRow.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -279,6 +282,7 @@
 				3BF759052C8A34B400E84A64 /* MyPageView.swift in Sources */,
 				3BCDEB4D2C7F8A00003DC043 /* EverMatchApp.swift in Sources */,
 				3BF758DC2C81F71B00E84A64 /* ListViewModel.swift in Sources */,
+				3BF759072C8A39DE00E84A64 /* MyPageRow.swift in Sources */,
 				3BF758F72C83AE3B00E84A64 /* LoginView.swift in Sources */,
 				3BF758E02C8243B900E84A64 /* Extensions.swift in Sources */,
 				3BF759002C842AC800E84A64 /* BasicButton.swift in Sources */,
