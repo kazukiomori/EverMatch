@@ -12,15 +12,31 @@ struct ListView: View {
     var body: some View {
         Group {
             if viewModel.users.count > 0 {
-                VStack(spacing: 0) {
-                    // cards
-                    cards
-                    
-                    //action
-                    actions
+                NavigationStack {
+                    VStack(spacing: 0) {
+                        // cards
+                        cards
+                        
+                        //action
+                        actions
+                    }
+                    .background(.black, in: RoundedRectangle(cornerRadius: 15))
+                    .padding(.horizontal, 6)
+                    .toolbar {
+                        ToolbarItem(placement: .topBarTrailing) {
+                            NavigationLink {
+                                MyPageView()
+                            } label: {
+                                Image("avatar")
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 32, height: 32)
+                                    .clipShape(Circle())
+                            }
+                        }
+                    }
                 }
-                .background(.black, in: RoundedRectangle(cornerRadius: 15))
-                .padding(.horizontal, 6)
+                .tint(.black)
             } else {
                 ProgressView()
                     .padding()

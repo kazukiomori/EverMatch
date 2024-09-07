@@ -8,6 +8,9 @@
 import SwiftUI
 
 struct MyPageView: View {
+    
+    @State private var showEditProfileView = false
+    
     var body: some View {
         List {
             // User info
@@ -21,48 +24,27 @@ struct MyPageView: View {
             // Navigation
             Section("アカウント") {
                 Button {
-                    
+                    showEditProfileView.toggle()
                 } label: {
-                    HStack(spacing: 16) {
-                        Image(systemName: "square.and.pencil.circle.fill")
-                            .imageScale(.large)
-                            .foregroundStyle(.red)
-                        
-                        Text("プロフィール変更")
-                            .font(.subheadline)
-                            .foregroundStyle(.black)
-                    }
+                    MyPageRow(iconName: "square.and.pencil.circle.fill", label: "プロフィール変更", tintColor: .red)
                 }
                 
                 Button {
                     
                 } label: {
-                    HStack(spacing: 16) {
-                        Image(systemName: "arrow.left.circle.fill")
-                            .imageScale(.large)
-                            .foregroundStyle(.red)
-                        
-                        Text("プロフィール変更")
-                            .font(.subheadline)
-                            .foregroundStyle(.black)
-                    }
+                    MyPageRow(iconName: "arrow.left.circle.fill", label: "ログアウト", tintColor: .red)
                 }
                 
                 Button {
                     
                 } label: {
-                    HStack(spacing: 16) {
-                        Image(systemName: "xmark.circle.fill")
-                            .imageScale(.large)
-                            .foregroundStyle(.red)
-                        
-                        Text("プロフィール変更")
-                            .font(.subheadline)
-                            .foregroundStyle(.black)
-                    }
+                    MyPageRow(iconName: "xmark.circle.fill", label: "アカウント削除", tintColor: .red)
                 }
             }
         }
+        .sheet(isPresented: $showEditProfileView, content: {
+            EditProfileView()
+        })
     }
 }
 

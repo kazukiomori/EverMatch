@@ -12,7 +12,14 @@ struct MyPageRow: View {
     let iconName: String
     let label: String
     let tintColor: Color
-    let value: String? = nil
+    var value: String? = nil
+    
+    init(iconName: String, label: String, tintColor: Color,  value: String? = nil) {
+        self.iconName = iconName
+        self.label = label
+        self.tintColor = tintColor
+        self.value = value
+    }
     
     var body: some View {
         

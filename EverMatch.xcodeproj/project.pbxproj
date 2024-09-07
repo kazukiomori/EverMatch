@@ -29,6 +29,8 @@
 		3BF759022C842D6100E84A64 /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF759012C842D6100E84A64 /* AuthViewModel.swift */; };
 		3BF759052C8A34B400E84A64 /* MyPageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF759042C8A34B300E84A64 /* MyPageView.swift */; };
 		3BF759072C8A39DE00E84A64 /* MyPageRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF759062C8A39DE00E84A64 /* MyPageRow.swift */; };
+		3BF81BA42C8CCDEF00CC44DA /* EditProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF81BA32C8CCDEF00CC44DA /* EditProfileView.swift */; };
+		3BF81BA62C8CD28900CC44DA /* PickerField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3BF81BA52C8CD28900CC44DA /* PickerField.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,6 +54,8 @@
 		3BF759012C842D6100E84A64 /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
 		3BF759042C8A34B300E84A64 /* MyPageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageView.swift; sourceTree = "<group>"; };
 		3BF759062C8A39DE00E84A64 /* MyPageRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MyPageRow.swift; sourceTree = "<group>"; };
+		3BF81BA32C8CCDEF00CC44DA /* EditProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditProfileView.swift; sourceTree = "<group>"; };
+		3BF81BA52C8CD28900CC44DA /* PickerField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerField.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -186,6 +190,7 @@
 				3BF758FD2C83B88800E84A64 /* InputField.swift */,
 				3BF758FF2C842AC700E84A64 /* BasicButton.swift */,
 				3BF759062C8A39DE00E84A64 /* MyPageRow.swift */,
+				3BF81BA52C8CD28900CC44DA /* PickerField.swift */,
 			);
 			path = Component;
 			sourceTree = "<group>";
@@ -194,6 +199,7 @@
 			isa = PBXGroup;
 			children = (
 				3BF759042C8A34B300E84A64 /* MyPageView.swift */,
+				3BF81BA32C8CCDEF00CC44DA /* EditProfileView.swift */,
 			);
 			path = MyPage;
 			sourceTree = "<group>";
@@ -277,7 +283,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3BF81BA62C8CD28900CC44DA /* PickerField.swift in Sources */,
 				3BCDEB4F2C7F8A00003DC043 /* ContentView.swift in Sources */,
+				3BF81BA42C8CCDEF00CC44DA /* EditProfileView.swift in Sources */,
 				3BF758FC2C83B7FF00E84A64 /* BrandImage.swift in Sources */,
 				3BF759052C8A34B400E84A64 /* MyPageView.swift in Sources */,
 				3BCDEB4D2C7F8A00003DC043 /* EverMatchApp.swift in Sources */,
