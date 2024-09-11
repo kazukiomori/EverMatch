@@ -9,7 +9,8 @@ import SwiftUI
 
 struct RegistrationView: View {
     
-    let authViewModel: AuthViewModel
+//    let authViewModel: AuthViewModel
+    @EnvironmentObject var authViewModel: AuthViewModel
     @State private var email = ""
     @State private var name = ""
     @State private var age = 18
@@ -58,5 +59,5 @@ struct RegistrationView: View {
 }
 
 #Preview {
-    RegistrationView(authViewModel: AuthViewModel())
+    RegistrationView()
 }
