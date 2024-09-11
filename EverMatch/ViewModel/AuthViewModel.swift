@@ -12,10 +12,14 @@ import FirebaseFirestore
 class AuthViewModel: ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
+    @Published var currentUser: User?
     
     init() {
         userSession = Auth.auth().currentUser
         print("\(userSession?.email)")
+        Task {
+            await fetchCurrentUser()
+        }
     }
     
     // Login
@@ -68,6 +72,16 @@ class AuthViewModel: ObservableObject {
             print("データ保存成功")
         } catch {
             print("データ保存失敗: \(error.localizedDescription)")
+        }
+    }
+    
+    private func fetchCurrentUser() async {
+        guard let uid = self.userSession?.uid else { return }
+        do {
+            let snapshot = try await Firestore.firestore().collection("users").document(uid).getDocument()
+            self.currentUser = try snapshot.data(as: User.self)
+        } catch {
+            print("カレントユーザー取得失敗:\(error.localizedDescription)")
         }
     }
 }
