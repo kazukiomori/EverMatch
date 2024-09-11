@@ -22,7 +22,12 @@ struct ListView: View {
                     }
                     .background(.black, in: RoundedRectangle(cornerRadius: 15))
                     .padding(.horizontal, 6)
+                    .navigationTitle("Ever Match")
+                    .navigationBarTitleDisplayMode(.inline)
                     .toolbar {
+                        ToolbarItem(placement: .topBarLeading) {
+                            BrandImage(size: .small)
+                        }
                         ToolbarItem(placement: .topBarTrailing) {
                             NavigationLink {
                                 MyPageView()
