@@ -93,6 +93,7 @@ class AuthViewModel: ObservableObject {
             "message": message]
         do {
             try await Firestore.firestore().collection("users").document(id).updateData(data)
+            await fetchCurrentUser()
         } catch {
             print("プロフィール更新失敗\(error.localizedDescription)")
         }
