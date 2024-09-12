@@ -75,6 +75,7 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    @MainActor
     private func fetchCurrentUser() async {
         guard let uid = self.userSession?.uid else { return }
         do {
