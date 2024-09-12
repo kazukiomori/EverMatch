@@ -85,4 +85,16 @@ class AuthViewModel: ObservableObject {
             print("カレントユーザー取得失敗:\(error.localizedDescription)")
         }
     }
+    
+    func updateUserProfile(withId id: String, name: String, age: Int, message: String) async {
+        let data: [AnyHashable: Any] = [
+            "name": name,
+            "age": age,
+            "message": message]
+        do {
+            try await Firestore.firestore().collection("users").document(id).updateData(data)
+        } catch {
+            print("プロフィール更新失敗\(error.localizedDescription)")
+        }
+    }
 }
