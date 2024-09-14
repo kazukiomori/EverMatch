@@ -8,6 +8,7 @@
 import SwiftUI
 
 struct ListView: View {
+    @EnvironmentObject var authViewModel: AuthViewModel
     @ObservedObject private var viewModel = ListViewModel()
     var body: some View {
         NavigationStack {
@@ -43,11 +44,24 @@ struct ListView: View {
                     NavigationLink {
                         MyPageView()
                     } label: {
-                        Image("avatar")
-                            .resizable()
-                            .aspectRatio(contentMode: .fill)
-                            .frame(width: 32, height: 32)
-                            .clipShape(Circle())
+                        if let urlString = authViewModel.currentUser?.photoUrl, let url = URL(string: urlString) {
+                            AsyncImage(url: url) { image in
+                                image
+                                    .resizable()
+                                    .aspectRatio(contentMode: .fill)
+                                    .frame(width: 32, height: 32)
+                                    .clipShape(Circle())
+                            } placeholder: {
+                                ProgressView()
+                                    .frame(width: 32, height: 32)
+                            }
+                        } else {
+                            Image("avatar")
+                                .resizable()
+                                .aspectRatio(contentMode: .fill)
+                                .frame(width: 32, height: 32)
+                                .clipShape(Circle())
+                        }
                     }
                 }
             }
