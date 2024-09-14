@@ -98,12 +98,14 @@ class AuthViewModel: ObservableObject {
     }
     
     func updateUserProfile(withId id: String, name: String, age: Int, message: String) async {
-        let data: [AnyHashable: Any] = [
+        var data: [AnyHashable: Any] = [
             "name": name,
             "age": age,
             "message": message]
         
-        await uploadImage()
+        if let urlString = await uploadImage() {
+            data["photoUrl"] = urlString
+        }
         
         do {
             try await Firestore.firestore().collection("users").document(id).updateData(data)
@@ -126,17 +128,21 @@ class AuthViewModel: ObservableObject {
     }
     
     // Upload Image Data
-    private func uploadImage() async {
+    private func uploadImage() async -> String? {
         let filename = NSUUID().uuidString
         let starageRef = Storage.storage().reference(withPath: "/user_images/\(filename)")
         
-        guard let uiImage = self.profileImage else { return }
-        guard let imageData = uiImage.jpegData(compressionQuality: 0.5) else { return }
+        guard let uiImage = self.profileImage else { return nil }
+        guard let imageData = uiImage.jpegData(compressionQuality: 0.5) else { return nil }
         do {
             _ = try await starageRef.putDataAsync(imageData)
             print("画像アップロード成功")
+            
+            let urlString = try await starageRef.downloadURL().absoluteString
+            return urlString
         } catch {
             print("画像アップロード失敗: \(error.localizedDescription)")
+            return nil
         }
         
     }
