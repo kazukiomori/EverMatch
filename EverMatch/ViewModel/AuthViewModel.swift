@@ -8,6 +8,7 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import FirebaseStorage
 import PhotosUI
 import SwiftUI
 
@@ -101,6 +102,9 @@ class AuthViewModel: ObservableObject {
             "name": name,
             "age": age,
             "message": message]
+        
+        await uploadImage()
+        
         do {
             try await Firestore.firestore().collection("users").document(id).updateData(data)
             await fetchCurrentUser()
@@ -109,14 +113,30 @@ class AuthViewModel: ObservableObject {
         }
     }
     
+    // Load Image
     @MainActor
-    func loadImage() async {
+    private func loadImage() async {
         guard let image = selectedImage else { return }
         do {
             guard let data = try await image.loadTransferable(type: Data.self) else { return }
             self.profileImage = UIImage(data: data)
         } catch {
             print("参照データのロード失敗: \(error.localizedDescription)")
+        }
+    }
+    
+    // Upload Image Data
+    private func uploadImage() async {
+        let filename = NSUUID().uuidString
+        let starageRef = Storage.storage().reference(withPath: "/user_images/\(filename)")
+        
+        guard let uiImage = self.profileImage else { return }
+        guard let imageData = uiImage.jpegData(compressionQuality: 0.5) else { return }
+        do {
+            _ = try await starageRef.putDataAsync(imageData)
+            print("画像アップロード成功")
+        } catch {
+            print("画像アップロード失敗: \(error.localizedDescription)")
         }
         
     }
