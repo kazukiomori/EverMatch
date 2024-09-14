@@ -8,11 +8,21 @@
 import Foundation
 import FirebaseAuth
 import FirebaseFirestore
+import PhotosUI
+import SwiftUI
 
 class AuthViewModel: ObservableObject {
     
     @Published var userSession: FirebaseAuth.User?
     @Published var currentUser: User?
+    @Published var selectedImage: PhotosPickerItem? {
+        didSet {
+            Task {
+                await loadImage()
+            }
+        }
+    }
+    @Published var profileImage: UIImage?
     
     init() {
         userSession = Auth.auth().currentUser
@@ -97,5 +107,17 @@ class AuthViewModel: ObservableObject {
         } catch {
             print("プロフィール更新失敗\(error.localizedDescription)")
         }
+    }
+    
+    @MainActor
+    func loadImage() async {
+        guard let image = selectedImage else { return }
+        do {
+            guard let data = try await image.loadTransferable(type: Data.self) else { return }
+            self.profileImage = UIImage(data: data)
+        } catch {
+            print("参照データのロード失敗: \(error.localizedDescription)")
+        }
+        
     }
 }
