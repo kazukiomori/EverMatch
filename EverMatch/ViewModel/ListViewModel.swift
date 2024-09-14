@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 import FirebaseFirestore
 
 class ListViewModel: ObservableObject {
@@ -33,12 +34,16 @@ class ListViewModel: ObservableObject {
     }
     
     private func fetchUsers() async -> [User] {
+        guard let currentUid = Auth.auth().currentUser?.uid else { return []}
+        
         do {
             let snapshot = try await Firestore.firestore().collection("users").getDocuments()
             var tempUsers = [User]()
             for document in snapshot.documents {
                 let user = try document.data(as: User.self)
-                tempUsers.append(user)
+                if currentUid != user.id {
+                    tempUsers.append(user)
+                }
             }
             return tempUsers
         } catch {

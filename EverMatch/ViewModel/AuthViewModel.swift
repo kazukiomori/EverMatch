@@ -55,6 +55,7 @@ class AuthViewModel: ObservableObject {
             print("ログアウト成功")
             self.userSession =  nil
             self.currentUser = nil
+            self.profileImage = nil
         } catch {
             print("ログアウト失敗: \(error.localizedDescription)")
         }
