@@ -37,7 +37,9 @@ struct MyPageView: View {
                 }
                 
                 Button {
-                    
+                    Task {
+                        await authViewModel.deleteAccount()
+                    }
                 } label: {
                     MyPageRow(iconName: "xmark.circle.fill", label: "アカウント削除", tintColor: .red)
                 }
