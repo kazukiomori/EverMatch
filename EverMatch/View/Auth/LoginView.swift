@@ -19,6 +19,7 @@ struct LoginView: View {
             VStack {
                 // image
                 BrandImage(size: .large)
+                    .padding(.vertical, 32)
                 
                 // Form
                 VStack(spacing: 24) {

@@ -23,6 +23,7 @@ struct RegistrationView: View {
         VStack {
             // image
             BrandImage(size: .large)
+                .padding(.vertical, 32)
             // Form
             VStack(spacing: 24) {
                 InputField(text: $email, label: "メールアドレス", placeholder: "入力してください", keyboardType: .emailAddress)
